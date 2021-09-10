@@ -1,0 +1,343 @@
+﻿@model IEnumerable<OlxWebsiteFyp.Models.Item>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h4 style="text-align:center">@TempData["AdminPanel"]</h4>
+      
+      @*  <div class="alert-warning">
+
+            <a href="@Url.Action("FeedIndex", "Items")">FeedBack</a>
+        </div>*@
+        @*<h2 style="text-align:center"> @Session["rare_name0"]</h2>*@
+
+        <div class="card">
+          
+            <img src="~/images/admin.png" alt="John" style="width:100%">
+            <h1> @Session["rare_name0"]</h1>
+            <p class="title"> @Session["rare_name2"]</p>
+            <p> @Session["rare_name3"]</p>
+            <div style="margin: 24px 0;">
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+            </div>
+            <p><a href="@Url.Action("CreateAdmin", "AdminPage")" class="btn btn-info btn-block"> Create New Registration</a> </p>
+
+        </div>
+
+
+
+
+        <div class="row">
+            <h3>Approval Goods</h3>
+            <table class="table table-bordered table-responsive table-condensed">
+                <thead>
+                    <tr class="btn-primary">
+                        <th>
+                            @Html.DisplayNameFor(model => model.re_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.i_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.i_price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.i_image)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.i_status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.i_contact)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.i_date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.i_active)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category.c_name)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.i_active == 1)
+                        {
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.re_id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.i_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.i_price)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.i_image)*@
+
+                                    <a href="@Url.Content(item.i_image)"></a><img class="card-img-top" src="@Url.Content(item.i_image)" width="50" height="50" alt="Card image cap" />
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.i_status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.i_contact)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.i_date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.i_active)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.c_name)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.i_id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.i_id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.i_id })
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                }
+
+                </table>
+            </div>
+            <div class="row">
+                <h3>Non Approval Goods</h3>
+                <table class="table table-bordered table-responsive table-condensed">
+                    <thead>
+                        <tr class="btn-primary">
+                            <th>
+                                @Html.DisplayNameFor(model => model.re_id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.i_name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.i_price)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.i_image)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.i_status)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.i_contact)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.i_date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.i_active)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Category.c_name)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.i_active == 0)
+                            {
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.re_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.i_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.i_price)
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(modelItem => item.i_image)*@
+
+                                        <a href="@Url.Content(item.i_image)"></a><img class="card-img-top" src="@Url.Content(item.i_image)" width="50" height="50" alt="Card image cap" />
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.i_status)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.i_contact)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.i_date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.i_active)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Category.c_name)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.i_id }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.i_id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.i_id })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                    }
+
+                    </table>
+
+                </div>
+
+
+
+                <div class="row">
+                    <h3>These are Rental Goods</h3>
+                    <table class="table table-bordered table-responsive table-condensed">
+                        <thead>
+                            <tr class="btn-primary">
+                                <th>
+                                    @Html.DisplayNameFor(model => model.re_id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.i_name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.i_price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.i_image)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.i_status)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.i_contact)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.i_date)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.i_active)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Category.c_name)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if (item.i_active == 0 && item.i_status==1)
+                                {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.re_id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.i_name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.i_price)
+                                        </td>
+                                        <td>
+                                            @*@Html.DisplayFor(modelItem => item.i_image)*@
+
+                                            <a href="@Url.Content(item.i_image)"></a><img class="card-img-top" src="@Url.Content(item.i_image)" width="50" height="50" alt="Card image cap" />
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.i_status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.i_contact)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.i_date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.i_active)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Category.c_name)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.i_id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.i_id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.i_id })
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        }
+
+                        </table>
+                    </div>
+                </div>
+    </body>
+</html> 

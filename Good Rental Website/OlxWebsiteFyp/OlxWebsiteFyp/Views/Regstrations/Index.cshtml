@@ -1,0 +1,81 @@
+﻿@model IEnumerable<OlxWebsiteFyp.Models.Regstration>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.re_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.re_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.re_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.re_gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.re_age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.re_Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.re_city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.re_contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type.t_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_age)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_Photo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_city)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.re_contact)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type.t_name)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.re_id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.re_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.re_id })
+    </td>
+</tr>
+}
+
+</table>

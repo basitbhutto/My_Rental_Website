@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9fa6998a28b64c939e1beffd55bf121f" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="OLX2Model.Category" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLX2Model.Item" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="OLX2Model.FK__Item__c_id__1367E606" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OLX2Model.Regstration" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="OLX2Model.Type" Width="1.5" PointX="0.75" PointY="5.625" />
+        <AssociationConnector Association="OLX2Model.FK__Regstratio__t_id__25869641" />
+        <EntityTypeShape EntityType="OLX2Model.Feed" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

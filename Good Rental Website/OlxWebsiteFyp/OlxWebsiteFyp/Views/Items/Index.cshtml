@@ -1,0 +1,81 @@
+﻿@model IEnumerable<OlxWebsiteFyp.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.re_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.c_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.re_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_contact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.c_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.i_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.i_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.i_id })
+        </td>
+    </tr>
+}
+
+</table>

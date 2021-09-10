@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OlxWebsiteFyp.Models.Item>
+
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (item.i_status == 1)
+        {
+            <div class="col-md-4 col-sm-6">
+
+                <div class="card">
+                    <a href="@Url.Content(item.i_image)"></a><img class="card-img-top" src="@Url.Content(item.i_image)" width="300" height="300" alt="Card image cap" />
+
+                    <div class="card-block">
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.i_name)</h4>
+                        <h4 class="card-title">Price per day :  @Html.DisplayFor(modelItem => item.i_price)</h4>
+                        <h6 class="card-title">Category :  @Html.DisplayFor(modelItem => item.c_id)</h6>
+                        <p class="card-text">
+                            Date :
+                            @Html.DisplayFor(modelItem => item.i_date)
+
+                        </p>
+
+
+
+
+                    </div>
+                    <button class="btn btn-group-justified btn-info"> Order</button>
+                </div> <br />
+            </div>
+        }
+
+
+
+
+    }
+
+</div>
+
+

@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    
+
+
+
+
+
+
+
+
+    <style>
+        .rao {
+            /* background-color:aqua;*/
+            float: left;
+            text-align-last: end;
+        }
+
+
+
+
+        .footer-dark {
+  padding:50px 0;
+  color:#f0f9ff;
+  background-color:#282d32;
+}
+
+.footer-dark h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-dark ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-dark ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-dark ul a:hover {
+  opacity:0.8;
+}
+
+@*@media (max-width:767px) {
+  .footer-dark .item:not(.social) {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}*@
+
+.footer-dark .item.text {
+  margin-bottom:36px;
+}
+@*
+@media (max-width:767px) {
+  .footer-dark .item.text {
+    margin-bottom:0;
+  }
+}*@
+
+.footer-dark .item.text p {
+  opacity:0.6;
+  margin-bottom:0;
+}
+
+.footer-dark .item.social {
+  text-align:center;
+}
+
+@*@media (max-width:991px) {
+  .footer-dark .item.social {
+    text-align:center;
+    margin-top:20px;
+  }
+}
+*@
+.footer-dark .item.social > a {
+  font-size:20px;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.4);
+  margin:0 8px;
+  color:#fff;
+  opacity:0.75;
+}
+
+.footer-dark .item.social > a:hover {
+  opacity:0.9;
+}
+
+.footer-dark .copyright {
+  text-align:center;
+  padding-top:24px;
+  opacity:0.3;
+  font-size:13px;
+  margin-bottom:0;
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    @*<div style="background-color:orange; font-size:50px"><p>MY GOODS RENTAL WEBSITE...</p></div>*@
+    <div class="navbar navbar-inverse navbar-fixed-top" style=" background-color:palegoldenrod; border:3px solid red">
+        <div class="container">
+            <div class="navbar-header" style="color:white; border-color:aqua; font-weight: 900;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @Html.ActionLink("GOODS RENTAL WEBSITE..", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse;" style="font-weight: 900;">
+                <ul class="nav navbar-nav ">
+
+                  @*  <li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                    @{
+
+                        int ac = Convert.ToInt32(Session["Id"]);
+
+                    }
+
+
+
+                    @{
+                        string b = "4";
+                    }
+
+
+                    @if (b == Session["newaccount"])
+                    {
+                        <li class="rao">@Html.ActionLink("LOGIN", "LoginForm", "Regstrations")</li>
+                    }
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    @if (Session["name"] != null && ac == 3 || ac == 1)
+                    {
+                        <li class="rao">@Html.ActionLink("LOGOUT", "Logout", "Regstrations")</li>
+
+
+                        <li class="rao">@Html.ActionLink("Sell", "Create", "Items")</li>
+
+
+
+                    }
+                    else if (ac.Equals(2))
+                    {
+                        <li class="rao">@Html.ActionLink("LOGOUT", "Logout", "Regstrations")</li>
+
+
+                    }
+                    else
+                    {
+
+
+                        <li class="rao">
+                            <a href="@Url.Action("LoginForm", "Regstrations")">
+                                <span class="glyphicon glyphicon-log-in"></span> Login
+                            </a>
+                        </li>
+                    }
+
+                    <li>
+                        @if (Session["name"] != null)
+                        {
+                            <a href="@Url.Action("Type_Checker", "Regstrations")">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                Profile
+                            </a>
+                        }
+
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <marquee style="background-color:aqua; color:red; font-size:30PX;"><p>ALL TYPES OF GOODS ARE AVAILABLE FOR RENT ON THIS WEBSITE... </p></marquee>
+
+    <div class="container body-content">
+        @RenderBody()
+
+        <hr />
+
+
+        <div class="footer-dark" >
+            <footer>
+
+                @*style="color:red; background-color:gray; width:auto; font-size: 40px"*@
+
+                <p>&copy; @DateTime.Now.Year- </p>
+                @* <p>FACEBOOK</p>
+                <p>WHATSAPP</p>
+                <p>TWITTER</p>*@
+
+                @*<ul class="nav navbar-nav" style="color:red; background-color:black; padding:10px 370px 10px 40px ">
+                <li><a href="facebook.com"><img src="~/Photo/facebook.png" width="30" height="30" />FACEBOOK</a></li>
+                <li><a href="whatsapp.com"><img src="~/Photo/download.jfif"width="30" height="30"/> WHATSAPP</a></li>
+                <li> <a href="twitter.com"><img src="~/Photo/twitter.png" width="30" height="30"/>TWITTER</a> </li>
+
+                </ul>*@
+
+
+
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Services</h3>
+                            <ul>
+                                <li><a href="#">Web design</a></li>
+                                <li><a href="#">Development</a></li>
+                                <li><a href="#">Hosting</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>About</h3>
+                            <ul>
+                                <li> <a href="@Url.Action("FeedBack", "Items")">FeedBack</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 item text">
+                            <h3>Company Name</h3>
+                            <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                        </div>
+                        <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    </div>
+                    <p class="copyright">Company Name © 2018</p>
+                </div>
+
+
+
+
+
+
+
+
+            </footer>
+        </div>
+
+
+
+
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

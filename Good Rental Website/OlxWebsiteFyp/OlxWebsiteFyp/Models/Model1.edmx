@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OLX2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_name" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityType Name="Feed">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="44" />
+          <Property Name="f_description" Type="varchar" MaxLength="111" />
+          <Property Name="f_link" Type="varchar" MaxLength="33" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="i_id" />
+          </Key>
+          <Property Name="i_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="re_id" Type="int" />
+          <Property Name="i_name" Type="varchar" MaxLength="33" />
+          <Property Name="i_price" Type="varchar" MaxLength="33" />
+          <Property Name="i_image" Type="varchar" MaxLength="222" />
+          <Property Name="i_status" Type="int" />
+          <Property Name="i_contact" Type="varchar" MaxLength="223" />
+          <Property Name="i_date" Type="varchar" MaxLength="222" />
+          <Property Name="c_id" Type="int" />
+          <Property Name="i_active" Type="int" />
+          <Property Name="rent_days" Type="varchar" MaxLength="255" />
+          <Property Name="link_contact" Type="varchar" MaxLength="255" />
+          <Property Name="days_of_price" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Regstration">
+          <Key>
+            <PropertyRef Name="re_id" />
+          </Key>
+          <Property Name="re_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="re_name" Type="varchar" MaxLength="44" />
+          <Property Name="re_email" Type="varchar" MaxLength="44" />
+          <Property Name="re_gender" Type="varchar" MaxLength="44" />
+          <Property Name="re_age" Type="varchar" MaxLength="44" />
+          <Property Name="re_Photo" Type="varchar" MaxLength="123" />
+          <Property Name="re_city" Type="varchar" MaxLength="44" />
+          <Property Name="re_contact" Type="varchar" MaxLength="133" />
+          <Property Name="t_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_name" Type="varchar" MaxLength="44" />
+        </EntityType>
+        <Association Name="FK__Item__c_id__1367E606">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Regstratio__t_id__25869641">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Regstration" Type="Self.Regstration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Regstration">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OLX2ModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feed" EntityType="Self.Feed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regstration" EntityType="Self.Regstration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Item__c_id__1367E606" Association="Self.FK__Item__c_id__1367E606">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Regstratio__t_id__25869641" Association="Self.FK__Regstratio__t_id__25869641">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Regstration" EntitySet="Regstration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OLX2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_name" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Item__c_id__1367E606" FromRole="Category" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="i_id" />
+          </Key>
+          <Property Name="i_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="re_id" Type="Int32" />
+          <Property Name="i_name" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+          <Property Name="i_price" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+          <Property Name="i_image" Type="String" MaxLength="222" FixedLength="false" Unicode="false" />
+          <Property Name="i_status" Type="Int32" />
+          <Property Name="i_contact" Type="String" MaxLength="223" FixedLength="false" Unicode="false" />
+          <Property Name="i_date" Type="String" MaxLength="222" FixedLength="false" Unicode="false" />
+          <Property Name="c_id" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Item__c_id__1367E606" FromRole="Item" ToRole="Category" />
+          <Property Name="i_active" Type="Int32" />
+          <Property Name="rent_days" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="link_contact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="days_of_price" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Item__c_id__1367E606">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OLX2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <AssociationSet Name="FK__Item__c_id__1367E606" Association="Self.FK__Item__c_id__1367E606">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <EntitySet Name="Regstrations" EntityType="OLX2Model.Regstration" />
+          <EntitySet Name="Types" EntityType="OLX2Model.Type" />
+          <AssociationSet Name="FK__Regstratio__t_id__25869641" Association="OLX2Model.FK__Regstratio__t_id__25869641">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Regstration" EntitySet="Regstrations" />
+          </AssociationSet>
+          <EntitySet Name="Feeds" EntityType="OLX2Model.Feed" />
+        </EntityContainer>
+        <EntityType Name="Regstration">
+          <Key>
+            <PropertyRef Name="re_id" />
+          </Key>
+          <Property Name="re_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="re_name" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <Property Name="re_email" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <Property Name="re_gender" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <Property Name="re_age" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <Property Name="re_Photo" Type="String" MaxLength="123" FixedLength="false" Unicode="false" />
+          <Property Name="re_city" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <Property Name="re_contact" Type="String" MaxLength="133" FixedLength="false" Unicode="false" />
+          <Property Name="t_id" Type="Int32" />
+          <NavigationProperty Name="Type" Relationship="OLX2Model.FK__Regstratio__t_id__25869641" FromRole="Regstration" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_name" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Regstrations" Relationship="OLX2Model.FK__Regstratio__t_id__25869641" FromRole="Type" ToRole="Regstration" />
+        </EntityType>
+        <Association Name="FK__Regstratio__t_id__25869641">
+          <End Type="OLX2Model.Type" Role="Type" Multiplicity="0..1" />
+          <End Type="OLX2Model.Regstration" Role="Regstration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Regstration">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Feed">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+          <Property Name="f_description" Type="String" MaxLength="111" FixedLength="false" Unicode="false" />
+          <Property Name="f_link" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OLX2ModelStoreContainer" CdmEntityContainer="OLX2Entities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="OLX2Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="OLX2Model.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="days_of_price" ColumnName="days_of_price" />
+                <ScalarProperty Name="link_contact" ColumnName="link_contact" />
+                <ScalarProperty Name="rent_days" ColumnName="rent_days" />
+                <ScalarProperty Name="i_active" ColumnName="i_active" />
+                <ScalarProperty Name="i_id" ColumnName="i_id" />
+                <ScalarProperty Name="re_id" ColumnName="re_id" />
+                <ScalarProperty Name="i_name" ColumnName="i_name" />
+                <ScalarProperty Name="i_price" ColumnName="i_price" />
+                <ScalarProperty Name="i_image" ColumnName="i_image" />
+                <ScalarProperty Name="i_status" ColumnName="i_status" />
+                <ScalarProperty Name="i_contact" ColumnName="i_contact" />
+                <ScalarProperty Name="i_date" ColumnName="i_date" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regstrations">
+            <EntityTypeMapping TypeName="OLX2Model.Regstration">
+              <MappingFragment StoreEntitySet="Regstration">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="re_contact" ColumnName="re_contact" />
+                <ScalarProperty Name="re_city" ColumnName="re_city" />
+                <ScalarProperty Name="re_Photo" ColumnName="re_Photo" />
+                <ScalarProperty Name="re_age" ColumnName="re_age" />
+                <ScalarProperty Name="re_gender" ColumnName="re_gender" />
+                <ScalarProperty Name="re_email" ColumnName="re_email" />
+                <ScalarProperty Name="re_name" ColumnName="re_name" />
+                <ScalarProperty Name="re_id" ColumnName="re_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="OLX2Model.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="t_name" ColumnName="t_name" />
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feeds">
+            <EntityTypeMapping TypeName="OLX2Model.Feed">
+              <MappingFragment StoreEntitySet="Feed">
+                <ScalarProperty Name="f_link" ColumnName="f_link" />
+                <ScalarProperty Name="f_description" ColumnName="f_description" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="f_id" ColumnName="f_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

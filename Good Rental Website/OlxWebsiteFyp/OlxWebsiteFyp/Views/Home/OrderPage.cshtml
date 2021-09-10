@@ -1,0 +1,110 @@
+﻿@model IEnumerable<OlxWebsiteFyp.Models.Item>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Order Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .bg-1 {
+            background-color: #1abc9c; /* Green */
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-1">
+        <div class="container text-center">
+            <div class="">
+                <h2> Welcome To Purchase on Good Rental Website..</h2>
+            </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    @foreach (var item in Model)
+                    {
+                        if (item.i_active == 1)
+                        {
+                            <div class="col-md-4 col-sm-6">
+
+                                <div class="card">
+                                    <a href="@Url.Content(item.i_image)"></a><img class="card-img-top" src="@Url.Content(item.i_image)" width="300" height="300" alt="Card image cap" />
+
+                                    <div class="card-block">
+
+                                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.i_name)</h4>
+                                        <h4 class="card-title">Price per day :  @Html.DisplayFor(modelItem => item.i_price)</h4>
+                                        <h6 class="card-title">Category :  @Html.DisplayFor(modelItem => item.c_id)</h6>
+                                        <p class="card-text">
+                                            Date :
+                                            @Html.DisplayFor(modelItem => item.i_date)
+
+                                        </p>
+
+
+
+
+                                    </div>
+                                    @*<a href='@Url.Action("OrderPage","Home", new { id=item.i_id })' class="btn btn-group-justified btn-info"> Order</a>*@
+                                </div> <br />
+                            </div>
+                        }
+                    }
+
+                </div>
+
+
+                @{int i = 0;}
+            <div class="col-lg-6">
+                @foreach (var item in Model)
+                {
+                    <h3>   </h3>
+                    if (item.i_active == 1)
+                    {
+                        @*<div class="col-md-4 col-sm-6">*@
+
+                        <div class="card">
+
+                            <div class="card-block">
+                                <h4 class="card-title"> <strong><u>Seller Contact Information Shown Below </u></strong> </h4>
+                                <p>@Html.DisplayFor(modelItem => item.i_contact)</p>
+                                <br />
+                                <p>   @Html.DisplayFor(modelItem => item.i_price) Days For: @Html.DisplayFor(modelItem => item.days_of_price)  </p>
+
+                                <p>    Link Social Media   @Html.DisplayFor(modelItem => item.link_contact)</p>
+                               @* <h3>   <a href="@item.link_contact">Click here</a> </h3>*@
+
+
+
+                            </div>
+                            @*<a href='@Url.Action("OrderPage","Home", new { id=item.i_id })' class="btn btn-group-justified btn-info"> Order</a>*@
+                        </div>
+                        @*</div>*@
+
+
+
+                    }
+                }
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   
+
+
+</body>
+</html>

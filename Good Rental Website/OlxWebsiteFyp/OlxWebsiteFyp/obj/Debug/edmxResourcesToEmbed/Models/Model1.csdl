@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OLX2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_name" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__Item__c_id__1367E606" FromRole="Category" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="i_id" />
+    </Key>
+    <Property Name="i_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="re_id" Type="Int32" />
+    <Property Name="i_name" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+    <Property Name="i_price" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+    <Property Name="i_image" Type="String" MaxLength="222" FixedLength="false" Unicode="false" />
+    <Property Name="i_status" Type="Int32" />
+    <Property Name="i_contact" Type="String" MaxLength="223" FixedLength="false" Unicode="false" />
+    <Property Name="i_date" Type="String" MaxLength="222" FixedLength="false" Unicode="false" />
+    <Property Name="c_id" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Item__c_id__1367E606" FromRole="Item" ToRole="Category" />
+    <Property Name="i_active" Type="Int32" />
+    <Property Name="rent_days" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="link_contact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="days_of_price" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Item__c_id__1367E606">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="c_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OLX2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <AssociationSet Name="FK__Item__c_id__1367E606" Association="Self.FK__Item__c_id__1367E606">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <EntitySet Name="Regstrations" EntityType="OLX2Model.Regstration" />
+    <EntitySet Name="Types" EntityType="OLX2Model.Type" />
+    <AssociationSet Name="FK__Regstratio__t_id__25869641" Association="OLX2Model.FK__Regstratio__t_id__25869641">
+      <End Role="Type" EntitySet="Types" />
+      <End Role="Regstration" EntitySet="Regstrations" />
+    </AssociationSet>
+    <EntitySet Name="Feeds" EntityType="OLX2Model.Feed" />
+  </EntityContainer>
+  <EntityType Name="Regstration">
+    <Key>
+      <PropertyRef Name="re_id" />
+    </Key>
+    <Property Name="re_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="re_name" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+    <Property Name="re_email" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+    <Property Name="re_gender" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+    <Property Name="re_age" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+    <Property Name="re_Photo" Type="String" MaxLength="123" FixedLength="false" Unicode="false" />
+    <Property Name="re_city" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+    <Property Name="re_contact" Type="String" MaxLength="133" FixedLength="false" Unicode="false" />
+    <Property Name="t_id" Type="Int32" />
+    <NavigationProperty Name="Type" Relationship="OLX2Model.FK__Regstratio__t_id__25869641" FromRole="Regstration" ToRole="Type" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="t_id" />
+    </Key>
+    <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="t_name" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Regstrations" Relationship="OLX2Model.FK__Regstratio__t_id__25869641" FromRole="Type" ToRole="Regstration" />
+  </EntityType>
+  <Association Name="FK__Regstratio__t_id__25869641">
+    <End Type="OLX2Model.Type" Role="Type" Multiplicity="0..1" />
+    <End Type="OLX2Model.Regstration" Role="Regstration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="t_id" />
+      </Principal>
+      <Dependent Role="Regstration">
+        <PropertyRef Name="t_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Feed">
+    <Key>
+      <PropertyRef Name="f_id" />
+    </Key>
+    <Property Name="f_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="f_name" Type="String" MaxLength="44" FixedLength="false" Unicode="false" />
+    <Property Name="f_description" Type="String" MaxLength="111" FixedLength="false" Unicode="false" />
+    <Property Name="f_link" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

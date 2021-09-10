@@ -1,0 +1,82 @@
+﻿@model OlxWebsiteFyp.Models.Regstration
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Regstration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.re_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.re_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.re_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.re_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.re_gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.re_gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.re_age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.re_age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.re_Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.re_Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.re_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.re_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.re_contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.re_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type.t_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type.t_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.re_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

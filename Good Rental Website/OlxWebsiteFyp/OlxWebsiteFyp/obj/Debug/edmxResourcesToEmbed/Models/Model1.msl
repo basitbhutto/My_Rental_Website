@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OLX2ModelStoreContainer" CdmEntityContainer="OLX2Entities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="OLX2Model.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="OLX2Model.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="days_of_price" ColumnName="days_of_price" />
+          <ScalarProperty Name="link_contact" ColumnName="link_contact" />
+          <ScalarProperty Name="rent_days" ColumnName="rent_days" />
+          <ScalarProperty Name="i_active" ColumnName="i_active" />
+          <ScalarProperty Name="i_id" ColumnName="i_id" />
+          <ScalarProperty Name="re_id" ColumnName="re_id" />
+          <ScalarProperty Name="i_name" ColumnName="i_name" />
+          <ScalarProperty Name="i_price" ColumnName="i_price" />
+          <ScalarProperty Name="i_image" ColumnName="i_image" />
+          <ScalarProperty Name="i_status" ColumnName="i_status" />
+          <ScalarProperty Name="i_contact" ColumnName="i_contact" />
+          <ScalarProperty Name="i_date" ColumnName="i_date" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regstrations">
+      <EntityTypeMapping TypeName="OLX2Model.Regstration">
+        <MappingFragment StoreEntitySet="Regstration">
+          <ScalarProperty Name="t_id" ColumnName="t_id" />
+          <ScalarProperty Name="re_contact" ColumnName="re_contact" />
+          <ScalarProperty Name="re_city" ColumnName="re_city" />
+          <ScalarProperty Name="re_Photo" ColumnName="re_Photo" />
+          <ScalarProperty Name="re_age" ColumnName="re_age" />
+          <ScalarProperty Name="re_gender" ColumnName="re_gender" />
+          <ScalarProperty Name="re_email" ColumnName="re_email" />
+          <ScalarProperty Name="re_name" ColumnName="re_name" />
+          <ScalarProperty Name="re_id" ColumnName="re_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="OLX2Model.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="t_name" ColumnName="t_name" />
+          <ScalarProperty Name="t_id" ColumnName="t_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feeds">
+      <EntityTypeMapping TypeName="OLX2Model.Feed">
+        <MappingFragment StoreEntitySet="Feed">
+          <ScalarProperty Name="f_link" ColumnName="f_link" />
+          <ScalarProperty Name="f_description" ColumnName="f_description" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="f_id" ColumnName="f_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

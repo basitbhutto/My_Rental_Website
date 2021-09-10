@@ -1,0 +1,192 @@
+﻿@model OlxWebsiteFyp.Models.Regstration
+
+
+
+
+
+<br />
+
+
+
+
+
+
+
+    @Html.Raw(ViewBag.msg)
+
+
+
+
+    @using (Html.BeginForm("Create", "Regstrations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <h1 class="btn btn-primary btn-block text-center">New Registration Account</h1>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="container " style="border:15px solid red">
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.re_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.re_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.re_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.re_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.re_email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.re_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.re_gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    Male
+                    @Html.RadioButtonFor(model => model.re_gender, "Male")
+                    Female
+                    @Html.RadioButtonFor(model => model.re_gender, "Female")
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.re_age, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.re_age, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.re_age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.re_Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="ImageFile" id="ImageFile" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.re_city, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.re_city, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.re_city, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.re_contact, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.re_contact, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.re_contact, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.t_id, "Registraion Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("t_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.t_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <hr />
+    <div class="row">
+        <div class="form-group">
+
+
+            <div class="col-md-offset-3">
+                <input type="submit" value="Registration" class="btn btn-success btn-block" />
+            </div>
+            <br />
+            <div class="col-md-offset-2">
+                @Html.ActionLink("Login", "LoginForm", null, new { @class = "btn btn-info " })
+            </div>
+
+        </div>
+
+
+    </div>
+   
+
+
+
+</div>
+
+
+
+
+        @*
+            <div class="form-horizontal">
+        *@
+
+
+
+
+
+
+
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.re_gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.re_gender, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.re_gender, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @* </div>*@
+    }
+
+    @* <div>*@
+
+    @* </div>
+    *@
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
